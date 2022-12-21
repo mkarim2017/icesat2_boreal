@@ -97,7 +97,7 @@ def main():
     ATL08_filt_csv_s3_fn_list = [item for sublist in ATL08_filt_csv_s3_fn_list for item in sublist]
     
     # Read these ATL08 filtered CSVs into a single df
-    atl08 = pd.concat([pd.read_csv(f, storage_options={'anon':True}) for f in ATL08_filt_csv_s3_fn_list], sort=False)
+    atl08 = pd.concat([pd.read_csv(f) for f in ATL08_filt_csv_s3_fn_list], sort=False)
     
     # Write df to CSV
     out_csv_fn = os.path.join(out_dir, "atl08_004_30m_filt_merge_neighbors_" + str(f'{in_tile_num:04}.csv') )
