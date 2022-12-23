@@ -96,16 +96,17 @@ def main():
     # Convert from list of lists to list
     ATL08_filt_csv_s3_fn_list = [item for sublist in ATL08_filt_csv_s3_fn_list for item in sublist]
    
-    print(ATL08_filt_csv_s3_fn_list) 
-    # Read these ATL08 filtered CSVs into a single df
-    # atl08 = pd.concat([pd.read_csv(f) for f in ATL08_filt_csv_s3_fn_list], sort=False)
+    print("ATL08_filt_csv_s3_fn_list : {}".format(ATL08_filt_csv_s3_fn_list))
 	for f in ATL08_filt_csv_s3_fn_list:
 		print("Processing : {}".format(f))
 		try:
 		    pd.concat(pd.read_csv(f), sort=False)
 		except Exception as e:
-		    str(e)
+		    print(str(e))
 			traceback.print_stack()
+
+    # Read these ATL08 filtered CSVs into a single df
+    # atl08 = pd.concat([pd.read_csv(f) for f in ATL08_filt_csv_s3_fn_list], sort=False)
 	    
     
     # Write df to CSV
