@@ -1,7 +1,7 @@
 #!/bin/bash
 # this is intended for running DPS jobs; the input directory is where four files have been pulled because download=TRUE in the algorithm_config.yaml file
 # a tar file of biomass models, a data table csv, and two raster stack geotiff files
-
+set -xuo pipefail
 source activate icesat2_boreal
 basedir=$( cd "$(dirname "$0")" ; pwd -P )
 
